@@ -7,7 +7,8 @@
     --grid-cell-color-dark: white;
 }
 
-body {
+body,
+.customModal {
     min-height: 105vh;
 }
 

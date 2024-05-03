@@ -9,13 +9,16 @@ const caselle = document.querySelectorAll(".cell");
 let statusGioco = document.getElementById("statusGame");
 const divVIttoriePL1 = document.getElementById("vittorie1");
 const divVIttoriePL2 = document.getElementById("vittorie2");
-let myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+const customModal = document.querySelector(".customModal");
+// let myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+
 // le caselle contrassegnate da utente1 prenderanno 1 mentre quelle segnate da utente2 prenderanno 2
 let arrayVIttoria = [null, null, null, null, null, null, null, null, null];
 let VittoriePlayer1 = 0;
 let VIttoriePlayer2 = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
+    customModal.classList.add("d-none");
     resetButton.addEventListener("click", () => {
         reset(arrayVIttoria);
     });
@@ -150,7 +153,14 @@ const IspartitaPatta = (array) => {
 
 const izTie = () => {
     console.log("parità");
-    myModal.show();
+    customModal.classList.remove("d-none");
+    customModal.classList.add("d-block");
+
+    setTimeout(() => {
+        customModal.classList.add("d-none");
+        reset(arrayVIttoria);
+    }, 2500);
+    // myModal.show();
 };
 
 const reset = (array) => {
