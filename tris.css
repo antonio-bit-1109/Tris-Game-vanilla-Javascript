@@ -1,0 +1,150 @@
+:root {
+    --background-color-light: white;
+    --background-image-light: none;
+    --background-image-dark: url("./assets/images/bg-final.jpg");
+    --background-image-light: none;
+    --grid-cell-color-light: black;
+    --grid-cell-color-dark: white;
+}
+
+.button {
+    border: 1px solid black;
+    width: 100px;
+    padding: 8px;
+    border-radius: 15pc;
+    height: 75px;
+}
+
+.bgStart {
+    background-color: blueviolet;
+    color: yellow;
+    font-size: large;
+}
+
+.bgReset {
+    background-color: royalblue;
+    font-size: large;
+    color: rgb(140, 224, 140);
+    font-size: large;
+}
+
+.cellDimensionLight {
+    width: 180px;
+    height: 180px;
+    border: 3px var(--grid-cell-color-light) solid;
+}
+
+.cellDimensionDark {
+    width: 180px;
+    height: 180px;
+    border: 3px var(--grid-cell-color-dark) solid;
+}
+
+.dimensionWrapper {
+    width: 600px;
+}
+
+.cellGriglia0 {
+    border-top: none;
+    border-left: none;
+}
+.cellGriglia1 {
+    border-top: none;
+}
+.cellGriglia2 {
+    border-top: none;
+    border-right: none;
+}
+.cellGriglia3 {
+    border-left: none;
+}
+
+.cellGriglia5 {
+    border-right: none;
+}
+.cellGriglia6 {
+    border-left: none;
+    border-bottom: none;
+}
+
+.cellGriglia7 {
+    border-bottom: none;
+}
+.cellGriglia8 {
+    border-right: none;
+    border-bottom: none;
+}
+
+.signDimensions {
+    font-size: 10em;
+}
+
+label {
+    width: 90px;
+    height: 32px;
+    position: relative;
+    display: block;
+    background: #ebebeb;
+    border-radius: 200px;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+label:after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    background: linear-gradient(180deg, #ffcc89, #d8860b);
+    border-radius: 180px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+input:checked + label {
+    background: #242424;
+}
+input:checked + label:after {
+    left: 72px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #777, #3a3a3a);
+}
+label,
+label:after {
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background-color: #242424;
+}
+
+label svg {
+    position: absolute;
+    width: 30px;
+    left: 2px;
+    top: 3px;
+    z-index: 100;
+    color: #7e7e7e;
+}
+label svg.sun {
+    left: 0px;
+    fill: #fff;
+    transition: 0.3s;
+}
+label svg.moon {
+    left: 60px;
+    fill: #7e7e7e;
+    transition: 0.3s;
+}
+input:checked + label svg.sun {
+    fill: #7e7e7e;
+}
+input:checked + label svg.moon {
+    fill: #fff;
+}
