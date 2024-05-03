@@ -118,10 +118,12 @@ const checkVittoria = (array) => {
 
 const declareWinner = (num) => {
     if (num === 1) {
+        divWinner.classList.add("slit-in");
         divWinner.innerText = `ha vinto il giocatore ${num}`;
         VittoriePlayer1++;
         divVIttoriePL1.innerHTML = `Vittorie giocatore1:  <span class="fst-italic display-3 fw-bold">${VittoriePlayer1}</span>`;
     } else {
+        divWinner.classList.add("slit-in");
         divWinner.innerText = `ha vinto il giocatore ${num}`;
         VIttoriePlayer2++;
         divVIttoriePL2.innerHTML = `Vittorie giocatore2: <span class="fst-italic display-3 fw-bold">${VIttoriePlayer2}</span>`;
@@ -147,6 +149,7 @@ const izTie = () => {
 };
 
 const reset = (array) => {
+    divWinner.classList.remove("slit-in");
     IsGameReady = false;
     IsUtente1_turn = true;
     isutente2_turn = false;
