@@ -46,7 +46,10 @@ const MakeTheMove = () => {
             }
             if (IsUtente1_turn) {
                 console.log("hai selezionato casella " + i);
-                cell.innerHTML = `<span class='text-primary'>o</span>`;
+                cell.innerHTML = `<span class='text-primary letter'>o</span>`;
+                cell.classList.add("addPerspective");
+                let letter = cell.querySelector(".letter");
+                letter.classList.add("slide-in");
                 IsUtente1_turn = false;
                 isutente2_turn = true;
                 outputDiv.innerHTML = "";
@@ -65,7 +68,10 @@ const MakeTheMove = () => {
                 //
             } else if (isutente2_turn) {
                 console.log("hai selezionato casella " + i);
-                cell.innerHTML = `<span class='text-success'>x</span>`;
+                cell.innerHTML = `<span class='text-success letter'>x</span>`;
+                cell.classList.add("addPerspective");
+                let letter = cell.querySelector(".letter");
+                letter.classList.add("slide-in");
                 IsUtente1_turn = true;
                 isutente2_turn = false;
                 outputDiv.innerHTML = "";
