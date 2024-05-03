@@ -9,6 +9,7 @@ const caselle = document.querySelectorAll(".cell");
 let statusGioco = document.getElementById("statusGame");
 const divVIttoriePL1 = document.getElementById("vittorie1");
 const divVIttoriePL2 = document.getElementById("vittorie2");
+let myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
 // le caselle contrassegnate da utente1 prenderanno 1 mentre quelle segnate da utente2 prenderanno 2
 let arrayVIttoria = [null, null, null, null, null, null, null, null, null];
 let VittoriePlayer1 = 0;
@@ -50,7 +51,18 @@ const MakeTheMove = () => {
                 isutente2_turn = true;
                 outputDiv.innerHTML = "";
                 arrayVIttoria[i] = 1;
-                checkVittoria(arrayVIttoria);
+                const ritornaNull = checkVittoria(arrayVIttoria);
+
+                if (ritornaNull === null) {
+                    let ReturnedArray = IspartitaPatta(arrayVIttoria);
+                    if (ReturnedArray.length === 9 && ReturnedArray.every((value) => value === true)) {
+                        izTie();
+                    }
+                    return;
+                }
+                //
+                //
+                //
             } else if (isutente2_turn) {
                 console.log("hai selezionato casella " + i);
                 cell.innerHTML = `<span class='text-success'>x</span>`;
@@ -58,7 +70,15 @@ const MakeTheMove = () => {
                 isutente2_turn = false;
                 outputDiv.innerHTML = "";
                 arrayVIttoria[i] = 2;
-                checkVittoria(arrayVIttoria);
+                const ritornaNull = checkVittoria(arrayVIttoria);
+
+                if (ritornaNull === null) {
+                    let ReturnedArray = IspartitaPatta(arrayVIttoria);
+                    if (ReturnedArray.length === 9 && ReturnedArray.every((value) => value === true)) {
+                        izTie();
+                    }
+                    return;
+                }
             } else {
                 console.error("errore di progettazione");
             }
@@ -80,9 +100,11 @@ const checkVittoria = (array) => {
 
     for (let i = 0; i < condizioniVittoria.length; i++) {
         const [a, b, c] = condizioniVittoria[i];
+
         if (array[a] && array[a] === array[b] && array[a] === array[c]) {
             let winningPlayer = array[a];
             declareWinner(winningPlayer);
+            return;
         }
     }
     return null;
@@ -98,6 +120,24 @@ const declareWinner = (num) => {
         VIttoriePlayer2++;
         divVIttoriePL2.innerHTML = `Vittorie giocatore2: <span class="fst-italic display-3 fw-bold">${VIttoriePlayer2}</span>`;
     }
+};
+
+const IspartitaPatta = (array) => {
+    let arraycontrollo = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== null) {
+            arraycontrollo.push(true);
+        } else {
+            return;
+        }
+    }
+
+    return arraycontrollo;
+};
+
+const izTie = () => {
+    console.log("parità");
+    myModal.show();
 };
 
 const reset = (array) => {
