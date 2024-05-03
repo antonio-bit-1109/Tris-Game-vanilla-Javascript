@@ -7,6 +7,10 @@
     --grid-cell-color-dark: white;
 }
 
+body {
+    min-height: 105vh;
+}
+
 .button {
     border: 1px solid black;
     width: 100px;
@@ -150,20 +154,22 @@ input:checked + label svg.moon {
 }
 
 .slide-in {
-    animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-bck-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .addPerspective {
-    perspective: 1000px;
+    perspective: 2500px;
 }
 
 @keyframes slide-in-bck-center {
     0% {
-        transform: translateZ(600px);
+        transform: translateZ(4000px);
+
         opacity: 0;
     }
     100% {
         transform: translateZ(0);
+
         opacity: 1;
     }
 }
