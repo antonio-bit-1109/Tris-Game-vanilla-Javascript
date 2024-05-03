@@ -110,6 +110,11 @@ const checkVittoria = (array) => {
         if (array[a] && array[a] === array[b] && array[a] === array[c]) {
             let winningPlayer = array[a];
             declareWinner(winningPlayer);
+
+            //alla vittoria resetto l'arrayVittoria senno continua a dare punti al click
+            for (let i = 0; i < array.length; i++) {
+                array[i] = null;
+            }
             return;
         }
     }
