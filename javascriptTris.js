@@ -16,8 +16,8 @@ const drawGif = document.getElementById("drawGif");
 
 // le caselle contrassegnate da utente1 prenderanno 1 mentre quelle segnate da utente2 prenderanno 2
 let arrayVIttoria = [null, null, null, null, null, null, null, null, null];
-let VittoriePlayer1 = 0;
-let VIttoriePlayer2 = 0;
+let VittoriePlayer1 = JSON.parse(localStorage.getItem("puntiPlayer1")) || 0;
+let VIttoriePlayer2 = JSON.parse(localStorage.getItem("puntiPlayer2")) || 0;
 
 window.addEventListener("DOMContentLoaded", () => {
     customModal.classList.add("d-none");
@@ -29,6 +29,8 @@ window.addEventListener("DOMContentLoaded", () => {
     btnStart.innerText = "Inizia Gioco";
     drawGif.classList.add("d-none");
     drawGif.classList.remove("d-block");
+    divVIttoriePL1.innerHTML = `Vittorie giocatore1:  <span class="fst-italic display-3 fw-bold">${VittoriePlayer1}</span>`;
+    divVIttoriePL2.innerHTML = `Vittorie giocatore2: <span class="fst-italic display-3 fw-bold">${VIttoriePlayer2}</span>`;
 });
 
 const startGame = () => {
@@ -132,6 +134,7 @@ const checkVittoria = (array) => {
 const declareWinner = (num) => {
     if (num === 1) {
         VittoriePlayer1++;
+        JSON.stringify(localStorage.setItem("puntiPlayer1", VittoriePlayer1));
         customModal.classList.add("d-block");
         customModal.classList.remove("d-none");
         customModal.classList.add("addPerspective");
@@ -150,6 +153,7 @@ const declareWinner = (num) => {
     } else {
         //
         VIttoriePlayer2++;
+        JSON.stringify(localStorage.setItem("puntiPlayer2", VIttoriePlayer2));
         customModal.classList.add("d-block");
         customModal.classList.remove("d-none");
         customModal.classList.add("addPerspective");
@@ -233,6 +237,8 @@ const resetPunteggio = () => {
     addAnimation();
     VittoriePlayer1 = 0;
     VIttoriePlayer2 = 0;
+    JSON.stringify(localStorage.setItem("puntiPlayer1", VittoriePlayer1));
+    JSON.stringify(localStorage.setItem("puntiPlayer2", VittoriePlayer1));
     divVIttoriePL1.innerHTML = `Vittorie giocatore1:  <span class="fst-italic display-3 fw-bold">${VittoriePlayer1}</span>`;
     divVIttoriePL2.innerHTML = `Vittorie giocatore2: <span class="fst-italic display-3 fw-bold">${VIttoriePlayer2}</span>`;
 
