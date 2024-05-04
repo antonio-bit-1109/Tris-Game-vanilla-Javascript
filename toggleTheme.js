@@ -45,8 +45,8 @@ const darkMode = () => {
 };
 
 const LightMode = () => {
-    document.body.style.backgroundImage = "none";
-    document.body.style.backgroundColor = "white";
+    document.body.style.backgroundImage = "url('./assets/images/bg-definitiva.jpg')";
+    document.body.style.backgroundSize = "cover";
     h1.style.color = "black";
     divVittorie1.style.color = "black";
     divVittorie2.style.color = "black";

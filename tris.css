@@ -7,6 +7,18 @@
     --grid-cell-color-dark: white;
 }
 
+body {
+    background-image: url("./assets/images/bg-definitiva.jpg");
+    background-size: cover;
+}
+
+.LetterColor1 {
+    color: rgb(0, 0, 255);
+}
+.LetterColor2 {
+    color: rgb(8, 228, 8);
+}
+
 body,
 .customModal {
     min-height: 101vh;
