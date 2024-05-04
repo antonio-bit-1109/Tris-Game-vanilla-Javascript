@@ -4,6 +4,10 @@ const divVittorie1 = document.getElementById("vittorie1");
 const divVittorie2 = document.getElementById("vittorie2");
 const cellColor = document.querySelectorAll(".cell");
 
+const resetBtn = document.getElementById("reset");
+const startBtn = document.getElementById("btnStart");
+const resetScore = document.getElementById("btnResetPunti");
+
 input.addEventListener("change", () => {
     if (input.checked) {
         darkMode();
@@ -22,6 +26,22 @@ const darkMode = () => {
         cell.classList.add("cellDimensionDark");
         cell.classList.remove("cellDimensionLight");
     });
+
+    startBtn.style.backgroundColor = "yellow";
+    startBtn.style.color = "blueviolet";
+
+    resetBtn.style.backgroundColor = "green";
+    resetBtn.style.color = "blue";
+
+    resetScore.style.backgroundColor = "red";
+    resetScore.style.color = "lightgreen";
+
+    resetBtn.classList.add("shadowDarkMode");
+    startBtn.classList.add("shadowDarkMode");
+    resetScore.classList.add("shadowDarkMode");
+    resetBtn.classList.remove("shadowLigthMode");
+    startBtn.classList.remove("shadowLigthMode");
+    resetScore.classList.remove("shadowLigthMode");
 };
 
 const LightMode = () => {
@@ -34,4 +54,20 @@ const LightMode = () => {
         cell.classList.remove("cellDimensionDark");
         cell.classList.add("cellDimensionLight");
     });
+
+    startBtn.style.backgroundColor = "blueviolet";
+    startBtn.style.color = "yellow";
+
+    resetBtn.style.backgroundColor = "blue";
+    resetBtn.style.color = "green";
+
+    resetScore.style.backgroundColor = "lightgreen";
+    resetScore.style.color = "red";
+
+    resetBtn.classList.add("shadowLigthMode");
+    startBtn.classList.add("shadowLigthMode");
+    resetScore.classList.add("shadowLigthMode");
+    resetBtn.classList.remove("shadowDarkMode");
+    startBtn.classList.remove("shadowDarkMode");
+    resetScore.classList.remove("shadowDarkMode");
 };

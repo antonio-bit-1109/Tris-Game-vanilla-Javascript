@@ -18,6 +18,14 @@ body,
     padding: 8px;
     border-radius: 15pc;
     height: 75px;
+    box-shadow: 5px 5px 15px black;
+}
+
+.shadowLigthMode {
+    box-shadow: 5px 5px 15px black;
+}
+.shadowDarkMode {
+    box-shadow: 5px 5px 15px white;
 }
 
 .bgStart {
