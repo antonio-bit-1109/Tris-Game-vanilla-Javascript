@@ -3,14 +3,16 @@ let isutente2_turn = false;
 let IsGameReady = false;
 const btnStart = document.getElementById("btnStart");
 const outputDiv = document.getElementById("output");
-const divWinner = document.getElementById("outputwinner");
+// const divWinner = document.getElementById("outputwinner");
 const resetButton = document.getElementById("reset");
 const caselle = document.querySelectorAll(".cell");
 let statusGioco = document.getElementById("statusGame");
 const divVIttoriePL1 = document.getElementById("vittorie1");
 const divVIttoriePL2 = document.getElementById("vittorie2");
 const customModal = document.querySelector(".customModal");
-// let myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+let testoModaleCustom = document.getElementById("customModal_text");
+const BtnResetPunti = document.getElementById("btnResetPunti");
+const drawGif = document.getElementById("drawGif");
 
 // le caselle contrassegnate da utente1 prenderanno 1 mentre quelle segnate da utente2 prenderanno 2
 let arrayVIttoria = [null, null, null, null, null, null, null, null, null];
@@ -23,7 +25,10 @@ window.addEventListener("DOMContentLoaded", () => {
         reset(arrayVIttoria);
     });
     btnStart.addEventListener("click", startGame);
+    BtnResetPunti.addEventListener("click", resetPunteggio);
     btnStart.innerText = "Inizia Gioco";
+    drawGif.classList.add("d-none");
+    drawGif.classList.remove("d-block");
 });
 
 const startGame = () => {
@@ -126,14 +131,39 @@ const checkVittoria = (array) => {
 
 const declareWinner = (num) => {
     if (num === 1) {
-        divWinner.classList.add("slit-in");
-        divWinner.innerText = `ha vinto il giocatore ${num}`;
         VittoriePlayer1++;
+        customModal.classList.add("d-block");
+        customModal.classList.remove("d-none");
+        customModal.classList.add("addPerspective");
+        testoModaleCustom.classList.add("slit-in");
+        addAnimation();
+
+        testoModaleCustom.innerText = "giocatore 1 vince il round.";
+
+        removeAnimation(testoModaleCustom);
+        setTimeout(() => {
+            reset(arrayVIttoria);
+        }, 2500);
+
         divVIttoriePL1.innerHTML = `Vittorie giocatore1:  <span class="fst-italic display-3 fw-bold">${VittoriePlayer1}</span>`;
+        //
     } else {
-        divWinner.classList.add("slit-in");
-        divWinner.innerText = `ha vinto il giocatore ${num}`;
+        //
         VIttoriePlayer2++;
+        customModal.classList.add("d-block");
+        customModal.classList.remove("d-none");
+        customModal.classList.add("addPerspective");
+        testoModaleCustom.classList.add("slit-in");
+
+        addAnimation();
+
+        testoModaleCustom.innerText = "giocatore 2 vince il round.";
+
+        removeAnimation(testoModaleCustom);
+        setTimeout(() => {
+            reset(arrayVIttoria);
+        }, 2500);
+
         divVIttoriePL2.innerHTML = `Vittorie giocatore2: <span class="fst-italic display-3 fw-bold">${VIttoriePlayer2}</span>`;
     }
 };
@@ -151,25 +181,39 @@ const IspartitaPatta = (array) => {
     return arraycontrollo;
 };
 
+// FIX VISUALIZZAZIONE GIF
 const izTie = () => {
     console.log("parità");
     customModal.classList.remove("d-none");
     customModal.classList.add("d-block");
 
+    customModal.classList.add("addPerspective");
+    testoModaleCustom.classList.add("slit-in");
+
+    addAnimation();
+
+    testoModaleCustom.innerText = `Parità. Nessun Vincitore.`;
+
+    removeAnimation_AndGif(testoModaleCustom);
+
     setTimeout(() => {
-        customModal.classList.add("d-none");
         reset(arrayVIttoria);
     }, 2500);
-    // myModal.show();
+};
+
+const addAnimation = () => {
+    setTimeout(() => {
+        testoModaleCustom.classList.remove("slit-in");
+        testoModaleCustom.classList.add("slit-in-inverse");
+    }, 1800);
 };
 
 const reset = (array) => {
-    divWinner.classList.remove("slit-in");
     IsGameReady = false;
     IsUtente1_turn = true;
     isutente2_turn = false;
     statusGioco.innerHTML = "";
-    divWinner.innerHTML = "";
+    // divWinner.innerHTML = "";
     outputDiv.innerHTML = "";
     btnStart.innerText = "Inizia il gioco";
     caselle.forEach((cell, i) => {
@@ -178,4 +222,53 @@ const reset = (array) => {
     for (let i = 0; i < array.length; i++) {
         array[i] = null;
     }
+};
+
+const resetPunteggio = () => {
+    customModal.classList.add("d-block");
+    customModal.classList.remove("d-none");
+    customModal.classList.add("addPerspective");
+    testoModaleCustom.classList.add("slit-in");
+
+    addAnimation();
+    VittoriePlayer1 = 0;
+    VIttoriePlayer2 = 0;
+    divVIttoriePL1.innerHTML = `Vittorie giocatore1:  <span class="fst-italic display-3 fw-bold">${VittoriePlayer1}</span>`;
+    divVIttoriePL2.innerHTML = `Vittorie giocatore2: <span class="fst-italic display-3 fw-bold">${VIttoriePlayer2}</span>`;
+
+    testoModaleCustom.innerText = "Punteggio Resettato.";
+
+    removeAnimation(testoModaleCustom);
+};
+
+const removeAnimation = (textToReset) => {
+    setTimeout(() => {
+        customModal.classList.add("d-none");
+        customModal.classList.remove("d-block");
+        testoModaleCustom.classList.remove("slit-in-inverse");
+        textToReset.innerHTML = "";
+    }, 2500);
+};
+
+const removeAnimation_AndGif = (textToReset) => {
+    // customModal.classList.add("d-block");
+    // customModal.classList.remove("d-none");
+    setTimeout(() => {
+        testoModaleCustom.classList.remove("slit-in-inverse");
+        testoModaleCustom.classList.add("d-none");
+    }, 2500);
+    setTimeout(() => {
+        drawGif.classList.remove("d-none");
+        drawGif.classList.add("d-block");
+    }, 2200);
+
+    setTimeout(() => {
+        customModal.classList.add("d-none");
+        customModal.classList.remove("d-block");
+        testoModaleCustom.classList.remove("slit-in-inverse");
+        drawGif.classList.remove("d-block");
+        drawGif.classList.add("d-none");
+        textToReset.innerHTML = "";
+        testoModaleCustom.classList.remove("d-none");
+    }, 6600);
 };

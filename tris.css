@@ -33,6 +33,13 @@ body,
     font-size: large;
 }
 
+.bgResetPoints {
+    background-color: rgb(57, 233, 14);
+    font-size: large;
+    color: rgb(218, 36, 60);
+    font-size: large;
+}
+
 .cellDimensionLight {
     width: 180px;
     height: 180px;
@@ -162,6 +169,10 @@ input:checked + label svg.moon {
     perspective: 2500px;
 }
 
+.opaque {
+    opacity: 0.8;
+}
+
 @keyframes slide-in-bck-center {
     0% {
         transform: translateZ(4000px);
@@ -176,7 +187,11 @@ input:checked + label svg.moon {
 }
 
 .slit-in {
-    animation: slit-in-horizontal 0.45s ease-out both;
+    animation: slit-in-horizontal 0.3s ease-out both;
+}
+
+.slit-in-inverse {
+    animation: slit-in-horizontal-inverse 0.7s ease-out both;
 }
 
 @keyframes slit-in-horizontal {
@@ -190,5 +205,19 @@ input:checked + label svg.moon {
     }
     100% {
         transform: translateZ(0) rotateX(0);
+    }
+}
+
+@keyframes slit-in-horizontal-inverse {
+    0% {
+        transform: translateZ(0) rotateX(0);
+    }
+    54% {
+        transform: translateZ(-160px) rotateX(87deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateZ(-800px) rotateX(90deg);
+        opacity: 0;
     }
 }
