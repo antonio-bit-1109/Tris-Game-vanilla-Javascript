@@ -9,7 +9,11 @@
 
 body,
 .customModal {
-    min-height: 105vh;
+    min-height: 101vh;
+}
+
+.customAbsolutePosition {
+    top: -52px;
 }
 
 .button {

@@ -34,7 +34,7 @@ const darkMode = () => {
     resetBtn.style.color = "blue";
 
     resetScore.style.backgroundColor = "red";
-    resetScore.style.color = "lightgreen";
+    resetScore.style.color = "rgb(57, 233, 14)";
 
     resetBtn.classList.add("shadowDarkMode");
     startBtn.classList.add("shadowDarkMode");
@@ -59,9 +59,9 @@ const LightMode = () => {
     startBtn.style.color = "yellow";
 
     resetBtn.style.backgroundColor = "blue";
-    resetBtn.style.color = "green";
+    resetBtn.style.color = "rgb(140, 224, 140)";
 
-    resetScore.style.backgroundColor = "lightgreen";
+    resetScore.style.backgroundColor = "rgb(57, 233, 14)";
     resetScore.style.color = "red";
 
     resetBtn.classList.add("shadowLigthMode");
